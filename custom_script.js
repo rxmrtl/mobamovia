@@ -272,3 +272,13 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     tl.call(addHoverEffects, null, "+=1");
 });
+
+
+
+jQuery(function($) {    
+    $(".serv_accordion ul > .accordion_item.is_active").children(".div_panel").slideDown();
+    
+    $(".serv_accordion ul > .accordion_item").click(function() {
+        $(this).toggleClass("is_active").children(".div_panel").slideToggle("ease-out");
+    });
+});
