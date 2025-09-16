@@ -14,3 +14,15 @@ function mobamovia_enqueue_styles() {
     wp_enqueue_script('mobamovia-custom-script', get_stylesheet_directory_uri() . '/custom_script.js',
         array(), filemtime(get_stylesheet_directory() . '/custom_script.js'), true );
 }
+
+function mobamovia_theme_init() {
+    // Register pattern category
+    register_block_pattern_category(
+        'mobamovia-patterns',
+        array( 'label' => __( 'Mobamovia Patterns', 'mobamovia' ) )
+    );
+
+    // Register ACF blocks
+    register_block_type( __DIR__ . '/blocks/testimonials-slider' );
+}
+add_action( 'init', 'mobamovia_theme_init' );

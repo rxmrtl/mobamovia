@@ -1,0 +1,56 @@
+{
+    "name": "acf/testimonials-slider",
+    "title": "Testimonials Slider",
+    "description": "A custom block to display a slider of testimonials.",
+    "category": "mobamovia-patterns",
+    "icon": "format-quote",
+    "keywords": ["testimonial", "slider", "quote", "mobamovia"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "render.php",
+        "fields": [
+            {
+                "key": "field_testimonial_items",
+                "label": "Testimonials",
+                "name": "testimonial_items",
+                "type": "repeater",
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_testimonial_quote",
+                        "label": "Quote",
+                        "name": "quote",
+                        "type": "textarea"
+                    },
+                    {
+                        "key": "field_testimonial_author",
+                        "label": "Author",
+                        "name": "author",
+                        "type": "text"
+                    },
+                    {
+                        "key": "field_testimonial_source",
+                        "label": "Source/Company",
+                        "name": "source",
+                        "type": "text"
+                    },
+                    {
+                        "key": "field_testimonial_layout",
+                        "label": "Card Layout Style",
+                        "name": "layout_style",
+                        "type": "select",
+                        "choices": {
+                            "normal": "Normal",
+                            "large_text": "Large Text"
+                        },
+                        "default_value": "normal"
+                    }
+                ]
+            }
+        ]
+    },
+    "supports": {
+        "align": false
+    },
+    "script": "file:./slider.js"
+}
