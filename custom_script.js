@@ -282,3 +282,72 @@ jQuery(function($) {
         $(this).toggleClass("is_active").children(".div_panel").slideToggle("ease-out");
     });
 });
+
+
+jQuery(function($) {    
+    $(".fiche_accordion ul > .accordion_item.is_active").children(".div_panel").slideDown();
+    
+    $(".fiche_accordion ul > .accordion_item").click(function() {
+        $(this).toggleClass("is_active").children(".div_panel").slideToggle("ease-out");
+    });
+});
+
+
+jQuery(function($) {
+    $(".div_filtres ul li a").click(function(event) {
+        event.preventDefault();
+        $(this).closest('li').toggleClass('selected');
+    });
+});
+
+
+jQuery(function($) {
+  const $playBtn = $('#play_camp_video');
+  const $video = $('#camp_video');
+
+  $playBtn.on('click', function() {
+
+    $playBtn.hide();
+    $video.addClass('active');
+
+    const videoEl = $video.get(0);
+    const playPromise = videoEl.play();
+
+    if (playPromise !== undefined) {
+      playPromise.catch(function(err) {
+        console.warn('Autoplay prevented:', err);
+      });
+    }
+
+    $video.focus();
+  });
+});
+
+
+
+jQuery(function($){
+  const $title = $('#camp_archiv_vid_title');
+  const $play  = $('#camp_archiv_vid_play');
+  const $video = $('#camp_archiv_video');
+
+  $play.on('click', function() {
+    $play.fadeOut(300);
+    $title.fadeOut(300);
+
+    $video.fadeIn(300, function(){
+      const vidEl = $video.get(0);
+      const playPromise = vidEl.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(err => console.warn('Autoplay prevented:', err));
+      }
+    });
+  });
+
+  // Show play button & title again when video ends
+  $video.on('ended', function(){
+    $video.fadeOut(300, function(){
+      $play.fadeIn(300);
+      $title.fadeIn(300);
+    });
+  });
+});
